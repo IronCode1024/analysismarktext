@@ -17,7 +17,7 @@ class Preference extends EventEmitter {
    * NOTE: This throws an exception when validation fails.
    *
    */
-  constructor (paths) {
+  constructor(paths) {
     // TODO: Preferences should not loaded if global.MARKTEXT_SAFE_MODE is set.
     super()
 
@@ -107,11 +107,14 @@ class Preference extends EventEmitter {
 
   /**
    * Change multiple setting entries.
+   * 更改多个设置条目。
    *
    * @param {Object.<string, *>} settings A settings object or subset object with key/value entries.
+  *                                  使用键/值条目设置设置对象或子集对象
    */
   setItems (settings) {
     if (!settings) {
+      //没有entires无法更改设置：对象未定义或为null
       log.error('Cannot change settings without entires: object is undefined or null.')
       return
     }

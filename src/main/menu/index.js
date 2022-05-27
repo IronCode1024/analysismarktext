@@ -24,7 +24,7 @@ class AppMenu {
    * @param {Keybindings} keybindings The keybindings instances.
    * @param {string} userDataPath The user data path.
    */
-  constructor (preferences, keybindings, userDataPath) {
+  constructor(preferences, keybindings, userDataPath) {
     this._preferences = preferences
     this._keybindings = keybindings
     this._userDataPath = userDataPath
@@ -39,8 +39,10 @@ class AppMenu {
 
   /**
    * Add the file or directory path to the recently used documents.
+   * 将文件或目录路径添加到最近使用的文档中。
    *
    * @param {string} filePath The file or directory full path.
+   *                          filePath文件或目录的完整路径。
    */
   addRecentlyUsedDocument (filePath) {
     const { isOsxOrWindows, RECENTS_PATH } = this
@@ -114,6 +116,7 @@ class AppMenu {
 
   /**
    * Add a default menu to the given window.
+   * 向给定窗口添加默认菜单。
    *
    * @param {number} windowId The window id.
    */
@@ -125,6 +128,7 @@ class AppMenu {
 
   /**
    * Add the settings menu to the given window.
+   * 将设置菜单添加到给定窗口。
    *
    * @param {BrowserWindow} window The settings browser window.
    */
@@ -136,6 +140,7 @@ class AppMenu {
 
   /**
    * Add the editor menu to the given window.
+   * 将编辑器菜单添加到给定窗口。
    *
    * @param {BrowserWindow} window The editor browser window.
    * @param {[*]} options The menu options.
@@ -174,11 +179,13 @@ class AppMenu {
 
   /**
    * Remove menu from the given window.
+   * 从给定窗口中删除菜单。
    *
    * @param {number} windowId The window id.
    */
   removeWindowMenu (windowId) {
     // NOTE: Shortcut handler is automatically unregistered when window is closed.
+    // 注意：当窗口关闭时，快捷方式处理程序将自动取消注册。
     const { activeWindowId } = this
     this.windowMenus.delete(windowId)
     if (activeWindowId === windowId) {
@@ -188,6 +195,7 @@ class AppMenu {
 
   /**
    * Returns the window menu.
+   * 返回窗口菜单。
    *
    * @param {number} windowId The window id.
    * @returns {Electron.Menu} The menu.
@@ -203,6 +211,7 @@ class AppMenu {
 
   /**
    * Check whether the given window has a menu.
+   * 检查给定窗口是否有菜单。
    *
    * @param {number} windowId The window id.
    */
@@ -212,12 +221,14 @@ class AppMenu {
 
   /**
    * Set the given window as last active.
+   * 将给定窗口设置为上次激活。
    *
    * @param {number} windowId The window id.
    */
   setActiveWindow (windowId) {
     if (this.activeWindowId !== windowId) {
       // Change application menu to the current window menu.
+      // 将应用程序菜单更改为当前窗口菜单。
       this._setApplicationMenu(this.getWindowMenuById(windowId))
       this.activeWindowId = windowId
     }
@@ -225,8 +236,10 @@ class AppMenu {
 
   /**
    * Updates all window menus.
+   * 更新所有窗口菜单。
    *
    * NOTE: We need this method to add or remove menu items at runtime.
+   * 注意：我们需要此方法在运行时添加或删除菜单项。
    *
    * @param {[string[]]} recentUsedDocuments
    */
@@ -236,10 +249,19 @@ class AppMenu {
     }
 
     // "we don't support changing menu object after calling setMenu, the behavior
+    //“我们不支持在调用setMenu后更改menu对象
     // is undefined if user does that." That mean we have to recreate the editor
+    //如果用户这样做，则未定义。“这意味着我们必须重新创建编辑器
     // application menu each time.
+    //每次应用程序菜单。
+
+
+
+
+
 
     // rebuild all window menus
+    //重建所有窗口菜单
     this.windowMenus.forEach((value, key) => {
       const { menu: oldMenu, type } = value
       if (type !== MenuType.EDITOR) return
@@ -247,6 +269,7 @@ class AppMenu {
       const { menu: newMenu } = this._buildEditorMenu(recentUsedDocuments)
 
       // all other menu items are set automatically
+      //  自动设置所有其他菜单项
       updateMenuItem(oldMenu, newMenu, 'sourceCodeModeMenuItem')
       updateMenuItem(oldMenu, newMenu, 'typewriterModeMenuItem')
       updateMenuItem(oldMenu, newMenu, 'focusModeMenuItem')
@@ -257,6 +280,7 @@ class AppMenu {
       value.menu = newMenu
 
       // update application menu if necessary
+      // 如有必要，更新应用程序菜单
       const { activeWindowId } = this
       if (activeWindowId === key) {
         this._setApplicationMenu(newMenu)
@@ -266,6 +290,7 @@ class AppMenu {
 
   /**
    * Update line ending menu items.
+   * 更新行尾菜单项。
    *
    * @param {number} windowId The window id.
    * @param {string} lineEnding Either >lf< or >crlf<.
@@ -283,6 +308,7 @@ class AppMenu {
 
   /**
    * Update always on top menu item.
+   * 始终更新顶部菜单项。
    *
    * @param {number} windowId The window id.
    * @param {boolean} lineEnding Always on top.
@@ -295,6 +321,7 @@ class AppMenu {
 
   /**
    * Update all theme entries from editor menus to the selected one.
+   * 将编辑器菜单中的所有主题条目更新为选定的主题条目。
    */
   updateThemeMenu = theme => {
     this.windowMenus.forEach(value => {
@@ -320,6 +347,7 @@ class AppMenu {
 
   /**
    * Update all auto save entries from editor menus to the given state.
+   * 将编辑器菜单中的所有自动保存条目更新到给定状态。
    */
   updateAutoSaveMenu = autoSave => {
     this.windowMenus.forEach(value => {
@@ -358,6 +386,7 @@ class AppMenu {
   _setApplicationMenu (menu) {
     if (isLinux && !menu) {
       // WORKAROUND for Electron#16521: We cannot hide the (application) menu on Linux.
+      //Electron#16521的解决方法：我们无法在Linux上隐藏（应用程序）菜单。
       const dummyMenu = Menu.buildFromTemplate([])
       Menu.setApplicationMenu(dummyMenu)
     } else {
@@ -429,9 +458,12 @@ const updateMenuItem = (oldMenus, newMenus, id) => {
 
 // HACKY: We have one application menu per window and switch the menu when
 // switching windows, so we can access and change the menu items via Electron.
+// HACKY：我们每个窗口都有一个应用程序菜单，在切换窗口时切换菜单，因此我们可以通过Electron访问和更改菜单项。
+
 
 /**
  * Return the menu from the application menu.
+ * 从应用程序菜单返回菜单。
  *
  * @param {string} menuId Menu ID
  * @returns {Electron.Menu} Returns the menu or null.

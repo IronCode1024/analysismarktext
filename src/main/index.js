@@ -39,6 +39,7 @@ if (args['--disable-gpu']) {
 }
 
 // Make MarkText a single instance application.
+// 使MarkText成为单实例应用程序。
 if (!process.mas && process.env.NODE_ENV !== 'development') {
   const gotSingleInstanceLock = app.requestSingleInstanceLock()
   if (!gotSingleInstanceLock) {

@@ -5,35 +5,37 @@ import { isOsx } from '../../config'
 
 export default function (keybindings, userPreference, recentlyUsedFiles) {
   const { autoSave } = userPreference.getAll()
-  const fileMenu = {
+  const fileMenu =
+  {
     label: '&File',
-    submenu: [{
-      label: 'New Tab',
-      accelerator: keybindings.getAccelerator('file.new-tab'),
-      click (menuItem, browserWindow) {
-        actions.newBlankTab(browserWindow)
-      }
-    }, {
-      label: 'New Window',
-      accelerator: keybindings.getAccelerator('file.new-window'),
-      click (menuItem, browserWindow) {
-        actions.newEditorWindow()
-      }
-    }, {
-      type: 'separator'
-    }, {
-      label: 'Open File...',
-      accelerator: keybindings.getAccelerator('file.open-file'),
-      click (menuItem, browserWindow) {
-        actions.openFile(browserWindow)
-      }
-    }, {
-      label: 'Open Folder...',
-      accelerator: keybindings.getAccelerator('file.open-folder'),
-      click (menuItem, browserWindow) {
-        actions.openFolder(browserWindow)
-      }
-    }]
+    submenu:
+      [{
+        label: 'New Tab',
+        accelerator: keybindings.getAccelerator('file.new-tab'),
+        click (menuItem, browserWindow) {
+          actions.newBlankTab(browserWindow)
+        }
+      }, {
+        label: 'New Window',
+        accelerator: keybindings.getAccelerator('file.new-window'),
+        click (menuItem, browserWindow) {
+          actions.newEditorWindow()
+        }
+      }, {
+        type: 'separator'
+      }, {
+        label: 'Open File...',
+        accelerator: keybindings.getAccelerator('file.open-file'),
+        click (menuItem, browserWindow) {
+          actions.openFile(browserWindow)
+        }
+      }, {
+        label: 'Open Folder...',
+        accelerator: keybindings.getAccelerator('file.open-folder'),
+        click (menuItem, browserWindow) {
+          actions.openFolder(browserWindow)
+        }
+      }]
   }
 
   if (!isOsx) {
