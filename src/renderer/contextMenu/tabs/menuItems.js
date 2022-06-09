@@ -1,63 +1,64 @@
-import * as contextMenu from './actions'
+import * as contextMenu from './actions';
 
 // NOTE: This are mutable fields that may change at runtime.
+// 注意：这是在运行时可能会更改的可变字段。
 
 export const SEPARATOR = {
   type: 'separator'
-}
+};
 
 export const CLOSE_THIS = {
   label: 'Close',
   id: 'closeThisTab',
   click (menuItem, browserWindow) {
-    contextMenu.closeThis(menuItem._tabId)
+    contextMenu.closeThis(menuItem._tabId);
   }
-}
+};
 
 export const CLOSE_OTHERS = {
   label: 'Close others',
   id: 'closeOtherTabs',
   click (menuItem, browserWindow) {
-    contextMenu.closeOthers(menuItem._tabId)
+    contextMenu.closeOthers(menuItem._tabId);
   }
-}
+};
 
 export const CLOSE_SAVED = {
   label: 'Close saved tabs',
   id: 'closeSavedTabs',
   click (menuItem, browserWindow) {
-    contextMenu.closeSaved()
+    contextMenu.closeSaved();
   }
-}
+};
 
 export const CLOSE_ALL = {
   label: 'Close all tabs',
   id: 'closeAllTabs',
   click (menuItem, browserWindow) {
-    contextMenu.closeAll()
+    contextMenu.closeAll();
   }
-}
+};
 
 export const RENAME = {
   label: 'Rename',
   id: 'renameFile',
   click (menuItem, browserWindow) {
-    contextMenu.rename(menuItem._tabId)
+    contextMenu.rename(menuItem._tabId);
   }
-}
+};
 
 export const COPY_PATH = {
   label: 'Copy path',
   id: 'copyPath',
   click (menuItem, browserWindow) {
-    contextMenu.copyPath(menuItem._tabId)
+    contextMenu.copyPath(menuItem._tabId);
   }
-}
+};
 
 export const SHOW_IN_FOLDER = {
   label: 'Show in folder',
   id: 'showInFolder',
   click (menuItem, browserWindow) {
-    contextMenu.showInFolder(menuItem._tabId)
+    contextMenu.showInFolder(menuItem._tabId);
   }
-}
+};

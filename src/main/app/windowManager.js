@@ -5,7 +5,7 @@ import Watcher, { WATCHER_STABILITY_THRESHOLD, WATCHER_STABILITY_POLL_INTERVAL }
 import { WindowType } from '../windows/base'
 
 class WindowActivityList {
-  constructor () {
+  constructor() {
     // Oldest             Newest
     //  <number>, ... , <number>
     this._buf = []
@@ -53,10 +53,10 @@ class WindowActivityList {
 class WindowManager extends EventEmitter {
   /**
    *
-   * @param {AppMenu} appMenu The application menu instance.
-   * @param {Preference} preferences The preference instance.
+   * @param {AppMenu} appMenu The application menu instance.应用程序菜单实例。
+   * @param {Preference} preferences The preference instance.首选项实例。
    */
-  constructor (appMenu, preferences) {
+  constructor(appMenu, preferences) {
     super()
 
     this._appMenu = appMenu

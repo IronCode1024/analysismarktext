@@ -1,4 +1,4 @@
-import { COMMANDS } from '../../commands'
+import { COMMANDS } from '../../commands';
 
 const DISABLE_LABELS = [
   // paragraph menu items
@@ -8,7 +8,7 @@ const DISABLE_LABELS = [
   'tableMenuItem',
   // formats menu items
   'hyperlinkMenuItem', 'imageMenuItem'
-]
+];
 
 const MENU_ID_MAP = Object.freeze({
   heading1MenuItem: 'h1',
@@ -28,118 +28,118 @@ const MENU_ID_MAP = Object.freeze({
   paragraphMenuItem: 'p',
   horizontalLineMenuItem: 'hr',
   frontMatterMenuItem: 'frontmatter' // 'pre'
-})
+});
 
 const transformEditorElement = (win, type) => {
   if (win && win.webContents) {
-    win.webContents.send('mt::editor-paragraph-action', { type })
+    win.webContents.send('mt::editor-paragraph-action', { type });
   }
-}
+};
 
 export const bulletList = win => {
-  transformEditorElement(win, 'ul-bullet')
-}
+  transformEditorElement(win, 'ul-bullet');
+};
 
 export const codeFence = win => {
-  transformEditorElement(win, 'pre')
-}
+  transformEditorElement(win, 'pre');
+};
 
 export const degradeHeading = win => {
-  transformEditorElement(win, 'degrade heading')
-}
+  transformEditorElement(win, 'degrade heading');
+};
 
 export const frontMatter = win => {
-  transformEditorElement(win, 'front-matter')
-}
+  transformEditorElement(win, 'front-matter');
+};
 
 export const heading1 = win => {
-  transformEditorElement(win, 'heading 1')
-}
+  transformEditorElement(win, 'heading 1');
+};
 
 export const heading2 = win => {
-  transformEditorElement(win, 'heading 2')
-}
+  transformEditorElement(win, 'heading 2');
+};
 
 export const heading3 = win => {
-  transformEditorElement(win, 'heading 3')
-}
+  transformEditorElement(win, 'heading 3');
+};
 
 export const heading4 = win => {
-  transformEditorElement(win, 'heading 4')
-}
+  transformEditorElement(win, 'heading 4');
+};
 
 export const heading5 = win => {
-  transformEditorElement(win, 'heading 5')
-}
+  transformEditorElement(win, 'heading 5');
+};
 
 export const heading6 = win => {
-  transformEditorElement(win, 'heading 6')
-}
+  transformEditorElement(win, 'heading 6');
+};
 
 export const horizontalLine = win => {
-  transformEditorElement(win, 'hr')
-}
+  transformEditorElement(win, 'hr');
+};
 
 export const htmlBlock = win => {
-  transformEditorElement(win, 'html')
-}
+  transformEditorElement(win, 'html');
+};
 
 export const looseListItem = win => {
-  transformEditorElement(win, 'loose-list-item')
-}
+  transformEditorElement(win, 'loose-list-item');
+};
 
 export const mathFormula = win => {
-  transformEditorElement(win, 'mathblock')
-}
+  transformEditorElement(win, 'mathblock');
+};
 
 export const orderedList = win => {
-  transformEditorElement(win, 'ol-order')
-}
+  transformEditorElement(win, 'ol-order');
+};
 
 export const paragraph = win => {
-  transformEditorElement(win, 'paragraph')
-}
+  transformEditorElement(win, 'paragraph');
+};
 
 export const quoteBlock = win => {
-  transformEditorElement(win, 'blockquote')
-}
+  transformEditorElement(win, 'blockquote');
+};
 
 export const table = win => {
-  transformEditorElement(win, 'table')
-}
+  transformEditorElement(win, 'table');
+};
 
 export const taskList = win => {
-  transformEditorElement(win, 'ul-task')
-}
+  transformEditorElement(win, 'ul-task');
+};
 
 export const increaseHeading = win => {
-  transformEditorElement(win, 'upgrade heading')
-}
+  transformEditorElement(win, 'upgrade heading');
+};
 
 // --- Commands -------------------------------------------------------------
 
 export const loadParagraphCommands = commandManager => {
-  commandManager.add(COMMANDS.PARAGRAPH_BULLET_LIST, bulletList)
-  commandManager.add(COMMANDS.PARAGRAPH_CODE_FENCE, codeFence)
-  commandManager.add(COMMANDS.PARAGRAPH_DEGRADE_HEADING, degradeHeading)
-  commandManager.add(COMMANDS.PARAGRAPH_FRONT_MATTER, frontMatter)
-  commandManager.add(COMMANDS.PARAGRAPH_HEADING_1, heading1)
-  commandManager.add(COMMANDS.PARAGRAPH_HEADING_2, heading2)
-  commandManager.add(COMMANDS.PARAGRAPH_HEADING_3, heading3)
-  commandManager.add(COMMANDS.PARAGRAPH_HEADING_4, heading4)
-  commandManager.add(COMMANDS.PARAGRAPH_HEADING_5, heading5)
-  commandManager.add(COMMANDS.PARAGRAPH_HEADING_6, heading6)
-  commandManager.add(COMMANDS.PARAGRAPH_HORIZONTAL_LINE, horizontalLine)
-  commandManager.add(COMMANDS.PARAGRAPH_HTML_BLOCK, htmlBlock)
-  commandManager.add(COMMANDS.PARAGRAPH_LOOSE_LIST_ITEM, looseListItem)
-  commandManager.add(COMMANDS.PARAGRAPH_MATH_FORMULA, mathFormula)
-  commandManager.add(COMMANDS.PARAGRAPH_ORDERED_LIST, orderedList)
-  commandManager.add(COMMANDS.PARAGRAPH_PARAGRAPH, paragraph)
-  commandManager.add(COMMANDS.PARAGRAPH_QUOTE_BLOCK, quoteBlock)
-  commandManager.add(COMMANDS.PARAGRAPH_TABLE, table)
-  commandManager.add(COMMANDS.PARAGRAPH_TASK_LIST, taskList)
-  commandManager.add(COMMANDS.PARAGRAPH_INCREASE_HEADING, increaseHeading)
-}
+  commandManager.add(COMMANDS.PARAGRAPH_BULLET_LIST, bulletList);
+  commandManager.add(COMMANDS.PARAGRAPH_CODE_FENCE, codeFence);
+  commandManager.add(COMMANDS.PARAGRAPH_DEGRADE_HEADING, degradeHeading);
+  commandManager.add(COMMANDS.PARAGRAPH_FRONT_MATTER, frontMatter);
+  commandManager.add(COMMANDS.PARAGRAPH_HEADING_1, heading1);
+  commandManager.add(COMMANDS.PARAGRAPH_HEADING_2, heading2);
+  commandManager.add(COMMANDS.PARAGRAPH_HEADING_3, heading3);
+  commandManager.add(COMMANDS.PARAGRAPH_HEADING_4, heading4);
+  commandManager.add(COMMANDS.PARAGRAPH_HEADING_5, heading5);
+  commandManager.add(COMMANDS.PARAGRAPH_HEADING_6, heading6);
+  commandManager.add(COMMANDS.PARAGRAPH_HORIZONTAL_LINE, horizontalLine);
+  commandManager.add(COMMANDS.PARAGRAPH_HTML_BLOCK, htmlBlock);
+  commandManager.add(COMMANDS.PARAGRAPH_LOOSE_LIST_ITEM, looseListItem);
+  commandManager.add(COMMANDS.PARAGRAPH_MATH_FORMULA, mathFormula);
+  commandManager.add(COMMANDS.PARAGRAPH_ORDERED_LIST, orderedList);
+  commandManager.add(COMMANDS.PARAGRAPH_PARAGRAPH, paragraph);
+  commandManager.add(COMMANDS.PARAGRAPH_QUOTE_BLOCK, quoteBlock);
+  commandManager.add(COMMANDS.PARAGRAPH_TABLE, table);
+  commandManager.add(COMMANDS.PARAGRAPH_TASK_LIST, taskList);
+  commandManager.add(COMMANDS.PARAGRAPH_INCREASE_HEADING, increaseHeading);
+};
 
 // --- IPC events -------------------------------------------------------------
 
@@ -147,43 +147,43 @@ export const loadParagraphCommands = commandManager => {
 //       window id from `AppMenu` manager.
 
 const setParagraphMenuItemStatus = (applicationMenu, bool) => {
-  const paragraphMenuItem = applicationMenu.getMenuItemById('paragraphMenuEntry')
+  const paragraphMenuItem = applicationMenu.getMenuItemById('paragraphMenuEntry');
   paragraphMenuItem.submenu.items
-    .forEach(item => (item.enabled = bool))
-}
+    .forEach(item => (item.enabled = bool));
+};
 
 const setMultipleStatus = (applicationMenu, list, status) => {
-  const paragraphMenuItem = applicationMenu.getMenuItemById('paragraphMenuEntry')
+  const paragraphMenuItem = applicationMenu.getMenuItemById('paragraphMenuEntry');
   paragraphMenuItem.submenu.items
     .filter(item => item.id && list.includes(item.id))
-    .forEach(item => (item.enabled = status))
-}
+    .forEach(item => (item.enabled = status));
+};
 
 const setCheckedMenuItem = (applicationMenu, { affiliation, isTable, isLooseListItem, isTaskList }) => {
-  const paragraphMenuItem = applicationMenu.getMenuItemById('paragraphMenuEntry')
-  paragraphMenuItem.submenu.items.forEach(item => (item.checked = false))
+  const paragraphMenuItem = applicationMenu.getMenuItemById('paragraphMenuEntry');
+  paragraphMenuItem.submenu.items.forEach(item => (item.checked = false));
   paragraphMenuItem.submenu.items.forEach(item => {
     if (!item.id) {
-      return false
+      return false;
     } else if (item.id === 'looseListItemMenuItem') {
-      item.checked = !!isLooseListItem
+      item.checked = !!isLooseListItem;
     } else if (Object.keys(affiliation).some(b => {
       if (b === 'ul' && isTaskList) {
         if (item.id === 'taskListMenuItem') {
-          return true
+          return true;
         }
-        return false
+        return false;
       } else if (isTable && item.id === 'tableMenuItem') {
-        return true
+        return true;
       } else if (item.id === 'codeFencesMenuItem' && /code$/.test(b)) {
-        return true
+        return true;
       }
-      return b === MENU_ID_MAP[item.id]
+      return b === MENU_ID_MAP[item.id];
     })) {
-      item.checked = true
+      item.checked = true;
     }
-  })
-}
+  });
+};
 
 /**
  * Update paragraph menu entires from given state.
@@ -200,32 +200,35 @@ export const updateSelectionMenus = (applicationMenu, state) => {
     isMultiline,
     isCodeFences,
     isCodeContent
-  } = state
+  } = state;
 
   // Reset format menu.
-  const formatMenuItem = applicationMenu.getMenuItemById('formatMenuItem')
-  formatMenuItem.submenu.items.forEach(item => (item.enabled = true))
+  const formatMenuItem = applicationMenu.getMenuItemById('formatMenuItem');
+  formatMenuItem.submenu.items.forEach(item => (item.enabled = true));
 
   // Handle menu checked.
-  setCheckedMenuItem(applicationMenu, state)
+  setCheckedMenuItem(applicationMenu, state);
 
   // Reset paragraph menu.
-  setParagraphMenuItemStatus(applicationMenu, !isDisabled)
+  setParagraphMenuItemStatus(applicationMenu, !isDisabled);
   if (isDisabled) {
-    return
+    return;
   }
 
   if (isCodeFences) {
-    setParagraphMenuItemStatus(applicationMenu, false)
+    setParagraphMenuItemStatus(applicationMenu, false);
 
     // A code line is selected.
     if (isCodeContent) {
-      formatMenuItem.submenu.items.forEach(item => (item.enabled = false))
+      formatMenuItem.submenu.items.forEach(item => (item.enabled = false));
 
       // TODO: Allow to transform to paragraph for other code blocks too but
+      // 也允许转换为其他代码块的段落，但是
       //   currently not supported by Muya.
+      // 目前 Muya 不支持。
       // // Allow to transform to paragraph.
-      // if (affiliation.frontmatter) {
+      // 允许转换为段落。
+      // if (affiliation.frontmatter) { 
       //   setMultipleStatus(applicationMenu, ['frontMatterMenuItem'], true)
       // } else if (affiliation.html) {
       //   setMultipleStatus(applicationMenu, ['htmlBlockMenuItem'], true)
@@ -236,18 +239,18 @@ export const updateSelectionMenus = (applicationMenu, state) => {
       // }
 
       if (Object.keys(affiliation).some(b => /code$/.test(b))) {
-        setMultipleStatus(applicationMenu, ['codeFencesMenuItem'], true)
+        setMultipleStatus(applicationMenu, ['codeFencesMenuItem'], true);
       }
     }
   } else if (isMultiline) {
     formatMenuItem.submenu.items
       .filter(item => item.id && DISABLE_LABELS.includes(item.id))
-      .forEach(item => (item.enabled = false))
-    setMultipleStatus(applicationMenu, DISABLE_LABELS, false)
+      .forEach(item => (item.enabled = false));
+    setMultipleStatus(applicationMenu, DISABLE_LABELS, false);
   }
 
   // Disable loose list item.
   if (!affiliation.ul && !affiliation.ol) {
-    setMultipleStatus(applicationMenu, ['looseListItemMenuItem'], false)
+    setMultipleStatus(applicationMenu, ['looseListItemMenuItem'], false);
   }
-}
+};

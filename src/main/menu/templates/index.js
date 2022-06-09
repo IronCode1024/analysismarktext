@@ -28,9 +28,9 @@ export const configSettingMenu = (keybindings) => {
  * Create the application menu for the editor window.
  * 为编辑器窗口创建应用程序菜单。
  *
- * @param {Keybindings} keybindings The keybindings instance.
- * @param {Preference} preferences The preference instance.
- * @param {string[]} recentlyUsedFiles The recently used files.
+ * @param {Keybindings} keybindings The keybindings instance. 为Keybindings实例
+ * @param {Preference} preferences The preference instance.首选项首选项实例
+ * @param {string[]} recentlyUsedFiles The recently used files.最近使用的文件将对最近使用的文件进行归档。
  */
 export default function (keybindings, preferences, recentlyUsedFiles) {
   return [
