@@ -23,7 +23,7 @@ class App {
    * @param {Accessor} accessor The application accessor for application instances.
    * @param {arg.Result} args Parsed application arguments.
    */
-  constructor(accessor, args) {
+  constructor (accessor, args) {
     this._accessor = accessor
     this._args = args || { _: [] }
     this._openFilesCache = []
@@ -37,11 +37,9 @@ class App {
 
   /**
    * The entry point into the application.
-   * 应用程序的入口点。
    */
   init () {
     // Enable these features to use `backdrop-filter` css rules!
-    // 启用这些功能以使用“Background filter”css规则！
     if (isOsx) {
       app.commandLine.appendSwitch('enable-experimental-web-platform-features', 'true')
     }
@@ -53,7 +51,6 @@ class App {
       const buf = []
       for (const pathname of args._) {
         // Ignore all unknown flags
-        // 忽略所有未知标志
         if (pathname.startsWith('--')) {
           continue
         }
@@ -98,15 +95,12 @@ class App {
     app.on('activate', () => { // macOS only
       // On OS X it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.
-      //在OS X上，当
-      //已单击停靠图标，并且没有打开其他窗口。
       if (this._windowManager.windowCount === 0) {
         this.ready()
       }
     })
 
     // Prevent to load webview and opening links or new windows via HTML/JS.
-    // 通过HTML/JS加载webview并打开链接或新窗口。
     app.on('web-contents-created', (event, contents) => {
       contents.on('will-attach-webview', event => {
         event.preventDefault()
@@ -129,7 +123,6 @@ class App {
   ready = () => {
     const { _args: args, _openFilesCache } = this
     const { preferences } = this._accessor
-
 
     if (args._.length) {
       for (const pathname of args._) {
@@ -160,7 +153,6 @@ class App {
     }
 
     // Set initial native theme for theme in preferences.
-    // 为首选项中的主题设置初始本机主题。
     const isDarkTheme = /dark/i.test(theme)
     if (autoSwitchTheme === 0 && isDarkTheme !== nativeTheme.shouldUseDarkColors) {
       selectTheme(nativeTheme.shouldUseDarkColors ? 'dark' : 'light')
@@ -172,7 +164,6 @@ class App {
     let isDarkMode = nativeTheme.shouldUseDarkColors
     ipcMain.on('broadcast-preferences-changed', change => {
       // Set Chromium's color for native elements after theme change.
-      // 更改主题后为本地元素设置Chromium的颜色
       if (change.theme) {
         const isDarkTheme = /dark/i.test(change.theme)
         if (isDarkMode !== isDarkTheme) {
@@ -180,7 +171,6 @@ class App {
           nativeTheme.themeSource = isDarkTheme ? 'dark' : 'light'
         } else if (nativeTheme.themeSource === 'system') {
           // Need to set dark or light theme because we set `system` to get the current system theme.
-          // 需要设置深色或浅色主题，因为我们设置了“system”以获取当前的系统主题
           nativeTheme.themeSource = isDarkMode ? 'dark' : 'light'
         }
       }
@@ -263,14 +253,6 @@ class App {
    * @param {string[]} [markdownList] Array of markdown data to open.
    * @param {*} [options] The BrowserWindow options.
    * @returns {EditorWindow} The created editor window.
-   * 
-   * *创建一个新的编辑器窗口。
-    *@param{string}[根目录]要打开的根目录。
-    *@param{string[]}[文件列表]要打开的标记文件列表。
-    *@param{string[]}[markdownList]要打开的降价数据数组。
-    *@param{*}[选项]浏览器窗口选项。
-    *@返回{EditorWindow}创建的编辑器窗口。
-   * 
    */
   _createEditorWindow (rootDirectory = null, fileList = [], markdownList = [], options = {}) {
     const editor = new EditorWindow(this._accessor)

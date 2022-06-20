@@ -10,10 +10,7 @@
       <h3>Export Options</h3>
       <el-tabs v-model="activeName">
         <el-tab-pane label="Info" name="info">
-          <span class="text"
-            >Please customize the page appearance and click on "export" to
-            continue.</span
-          >
+          <span class="text">Please customize the page appearance and click on "export" to continue.</span>
         </el-tab-pane>
         <el-tab-pane label="Page" name="page">
           <!-- HTML -->
@@ -22,7 +19,7 @@
               description="The page title:"
               :input="htmlTitle"
               :emitTime="0"
-              :onChange="(value) => onSelectChange('htmlTitle', value)"
+              :onChange="value => onSelectChange('htmlTitle', value)"
             ></text-box>
           </div>
 
@@ -34,28 +31,18 @@
                 description="Page size:"
                 :value="pageSize"
                 :options="pageSizeList"
-                :onChange="(value) => onSelectChange('pageSize', value)"
+                :onChange="value => onSelectChange('pageSize', value)"
               ></cur-select>
               <div v-if="pageSize === 'custom'" class="row">
                 <div>Width/Height in mm:</div>
-                <el-input-number
-                  v-model="pageSizeWidth"
-                  size="mini"
-                  controls-position="right"
-                  :min="100"
-                ></el-input-number>
-                <el-input-number
-                  v-model="pageSizeHeight"
-                  size="mini"
-                  controls-position="right"
-                  :min="100"
-                ></el-input-number>
+                <el-input-number v-model="pageSizeWidth" size="mini" controls-position="right" :min="100"></el-input-number>
+                <el-input-number v-model="pageSizeHeight" size="mini" controls-position="right" :min="100"></el-input-number>
               </div>
 
               <bool
                 description="Landscape orientation:"
                 :bool="isLandscape"
-                :onChange="(value) => onSelectChange('isLandscape', value)"
+                :onChange="value => onSelectChange('isLandscape', value)"
               ></bool>
             </div>
 
@@ -63,37 +50,13 @@
               <div class="description">Page margin in mm:</div>
               <div>
                 <div class="label">Top/Bottom:</div>
-                <el-input-number
-                  v-model="pageMarginTop"
-                  size="mini"
-                  controls-position="right"
-                  :min="0"
-                  :max="100"
-                ></el-input-number>
-                <el-input-number
-                  v-model="pageMarginBottom"
-                  size="mini"
-                  controls-position="right"
-                  :min="0"
-                  :max="100"
-                ></el-input-number>
+                <el-input-number v-model="pageMarginTop" size="mini" controls-position="right" :min="0" :max="100"></el-input-number>
+                <el-input-number v-model="pageMarginBottom" size="mini" controls-position="right" :min="0" :max="100"></el-input-number>
               </div>
               <div>
                 <div class="label">Left/Right:</div>
-                <el-input-number
-                  v-model="pageMarginLeft"
-                  size="mini"
-                  controls-position="right"
-                  :min="0"
-                  :max="100"
-                ></el-input-number>
-                <el-input-number
-                  v-model="pageMarginRight"
-                  size="mini"
-                  controls-position="right"
-                  :min="0"
-                  :max="100"
-                ></el-input-number>
+                <el-input-number v-model="pageMarginLeft" size="mini" controls-position="right" :min="0" :max="100"></el-input-number>
+                <el-input-number v-model="pageMarginRight" size="mini" controls-position="right" :min="0" :max="100"></el-input-number>
               </div>
             </div>
           </div>
@@ -102,15 +65,13 @@
           <bool
             description="Overwrite theme font settings:"
             :bool="fontSettingsOverwrite"
-            :onChange="
-              (value) => onSelectChange('fontSettingsOverwrite', value)
-            "
+            :onChange="value => onSelectChange('fontSettingsOverwrite', value)"
           ></bool>
           <div v-if="fontSettingsOverwrite">
             <font-text-box
               description="Font family:"
               :value="fontFamily"
-              :onChange="(value) => onSelectChange('fontFamily', value)"
+              :onChange="value => onSelectChange('fontFamily', value)"
             ></font-text-box>
             <range
               description="Font size"
@@ -119,7 +80,7 @@
               :max="32"
               unit="px"
               :step="1"
-              :onChange="(value) => onSelectChange('fontSize', value)"
+              :onChange="value => onSelectChange('fontSize', value)"
             ></range>
             <range
               description="Line height"
@@ -127,108 +88,99 @@
               :min="1.0"
               :max="2.0"
               :step="0.1"
-              :onChange="(value) => onSelectChange('lineHeight', value)"
+              :onChange="value => onSelectChange('lineHeight', value)"
             ></range>
           </div>
           <bool
             description="Auto numbering headings:"
             :bool="autoNumberingHeadings"
-            :onChange="
-              (value) => onSelectChange('autoNumberingHeadings', value)
-            "
+            :onChange="value => onSelectChange('autoNumberingHeadings', value)"
           ></bool>
           <bool
             description="Show front matter:"
             :bool="showFrontMatter"
-            :onChange="(value) => onSelectChange('showFrontMatter', value)"
+            :onChange="value => onSelectChange('showFrontMatter', value)"
           ></bool>
         </el-tab-pane>
         <el-tab-pane label="Theme" name="theme">
-          <div class="text">
-            You can change the document appearance by choosing a theme or create
-            a handcrafted one.
-          </div>
+          <div class="text">You can change the document appearance by choosing a theme or create a handcrafted one.</div>
           <cur-select
             description="Theme:"
             more="https://github.com/marktext/marktext/blob/develop/docs/EXPORT_THEMES.md"
             :value="theme"
             :options="themeList"
-            :onChange="(value) => onSelectChange('theme', value)"
+            :onChange="value => onSelectChange('theme', value)"
           ></cur-select>
         </el-tab-pane>
         <el-tab-pane v-if="isPrintable" label="Header & Footer" name="header">
-          <div class="text">
-            The text appear on all pages if header and/or footer is defined.
-          </div>
+          <div class="text">The text appear on all pages if header and/or footer is defined.</div>
           <cur-select
             description="Header type:"
             :value="headerType"
             :options="headerFooterTypes"
-            :onChange="(value) => onSelectChange('headerType', value)"
+            :onChange="value => onSelectChange('headerType', value)"
           ></cur-select>
           <text-box
             v-if="headerType === 2"
             description="The left header text:"
             :input="headerTextLeft"
             :emitTime="0"
-            :onChange="(value) => onSelectChange('headerTextLeft', value)"
+            :onChange="value => onSelectChange('headerTextLeft', value)"
           ></text-box>
           <text-box
             v-if="headerType !== 0"
             description="The main header text:"
             :input="headerTextCenter"
             :emitTime="0"
-            :onChange="(value) => onSelectChange('headerTextCenter', value)"
+            :onChange="value => onSelectChange('headerTextCenter', value)"
           ></text-box>
           <text-box
             v-if="headerType === 2"
             description="The right header text:"
             :input="headerTextRight"
             :emitTime="0"
-            :onChange="(value) => onSelectChange('headerTextRight', value)"
+            :onChange="value => onSelectChange('headerTextRight', value)"
           ></text-box>
 
           <cur-select
             description="Footer type:"
             :value="footerType"
             :options="headerFooterTypes"
-            :onChange="(value) => onSelectChange('footerType', value)"
+            :onChange="value => onSelectChange('footerType', value)"
           ></cur-select>
           <text-box
             v-if="footerType === 2"
             description="The left footer text:"
             :input="footerTextLeft"
             :emitTime="0"
-            :onChange="(value) => onSelectChange('footerTextLeft', value)"
+            :onChange="value => onSelectChange('footerTextLeft', value)"
           ></text-box>
           <text-box
             v-if="footerType !== 0"
             description="The main footer text:"
             :input="footerTextCenter"
             :emitTime="0"
-            :onChange="(value) => onSelectChange('footerTextCenter', value)"
+            :onChange="value => onSelectChange('footerTextCenter', value)"
           ></text-box>
           <text-box
             v-if="footerType === 2"
             description="The right footer text:"
             :input="footerTextRight"
             :emitTime="0"
-            :onChange="(value) => onSelectChange('footerTextRight', value)"
+            :onChange="value => onSelectChange('footerTextRight', value)"
           ></text-box>
 
           <bool
             description="Customize style:"
             :bool="headerFooterCustomize"
-            :onChange="
-              (value) => onSelectChange('headerFooterCustomize', value)
-            "
+            :onChange="value => onSelectChange('headerFooterCustomize', value)"
           ></bool>
 
           <div v-if="headerFooterCustomize">
             <bool
               description="Allow styled header and footer:"
               :bool="headerFooterStyled"
-              :onChange="(value) => onSelectChange('headerFooterStyled', value)"
+              :onChange="value => onSelectChange('headerFooterStyled', value)"
             ></bool>
             <range
               description="Header and footer font size"
@@ -237,9 +189,7 @@
               :max="20"
               unit="px"
               :step="1"
-              :onChange="
-                (value) => onSelectChange('headerFooterFontSize', value)
-              "
+              :onChange="value => onSelectChange('headerFooterFontSize', value)"
             ></range>
           </div>
         </el-tab-pane>
@@ -249,18 +199,20 @@
             description="Include top heading:"
             detailedDescription="Includes the first heading level too."
             :bool="tocIncludeTopHeading"
-            :onChange="(value) => onSelectChange('tocIncludeTopHeading', value)"
+            :onChange="value => onSelectChange('tocIncludeTopHeading', value)"
           ></bool>
           <text-box
             description="Title:"
             :input="tocTitle"
             :emitTime="0"
-            :onChange="(value) => onSelectChange('tocTitle', value)"
+            :onChange="value => onSelectChange('tocTitle', value)"
           ></text-box>
-        </el-tab-pane>
+         </el-tab-pane>
       </el-tabs>
       <div class="button-controlls">
-        <button class="button-primary" @click="handleClicked">Export...</button>
+        <button class="button-primary" @click="handleClicked">
+          Export...
+        </button>
       </div>
     </el-dialog>
   </div>
@@ -457,7 +409,6 @@ export default {
       bus.$emit('export', options)
     },
     onSelectChange (key, value) {
-      alert(value)
       this[key] = value
     },
     loadThemesFromDisk () {
@@ -498,59 +449,59 @@ export default {
 </script>
 
 <style scoped>
-.print-settings-dialog {
-  user-select: none;
-}
-.row {
-  margin-bottom: 8px;
-}
-.description {
-  margin-bottom: 10px;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-.label {
-  margin-bottom: 5px;
-}
-.label ~ div {
-  margin-right: 20px;
-}
-.text {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
+  .print-settings-dialog {
+    user-select: none;
+  }
+  .row {
+    margin-bottom: 8px;
+  }
+  .description {
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .label {
+    margin-bottom: 5px;
+  }
+  .label ~ div {
+    margin-right: 20px;
+  }
+  .text {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
 
-.button-controlls {
-  margin-top: 8px;
-  text-align: right;
-}
+  .button-controlls {
+    margin-top: 8px;
+    text-align: right;
+  }
 
-.button-controlls .button-primary {
-  font-size: 14px;
-}
+  .button-controlls .button-primary {
+    font-size: 14px;
+  }
 
-.el-tab-pane section:first-child {
-  margin-top: 0;
-}
+  .el-tab-pane section:first-child {
+    margin-top: 0;
+  }
 </style>
 <style>
-.print-settings-dialog #pane-header .pref-text-box-item .el-input {
-  width: 90% !important;
-}
+  .print-settings-dialog #pane-header .pref-text-box-item .el-input {
+    width: 90% !important;
+  }
 
-.print-settings-dialog .el-dialog__body {
-  padding: 0 20px 20px 20px;
-}
-.print-settings-dialog .pref-select-item .el-select {
-  width: 240px;
-}
-.print-settings-dialog .el-tabs__content {
-  max-height: 350px;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+  .print-settings-dialog .el-dialog__body {
+    padding: 0 20px 20px 20px;
+  }
+  .print-settings-dialog .pref-select-item .el-select {
+    width: 240px;
+  }
+  .print-settings-dialog .el-tabs__content {
+    max-height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 
-.print-settings-dialog .el-tabs__content::-webkit-scrollbar:vertical {
-  width: 5px;
-}
+  .print-settings-dialog .el-tabs__content::-webkit-scrollbar:vertical {
+    width: 5px;
+  }
 </style>
