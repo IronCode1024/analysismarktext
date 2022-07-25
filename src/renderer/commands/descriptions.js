@@ -1,7 +1,7 @@
 const commandDescriptions = Object.freeze({
   // ============================================
   // # Key binding descriptions
-  // #
+  // # 密钥绑定描述
 
   'mt.hide': 'MarkText: Hide MarkText',
   'mt.hide-others': 'MarkText: Hide Others',

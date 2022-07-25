@@ -3,6 +3,10 @@
 // NOTE: Avoid `Ctrl+Alt` and `AltGr` shortcuts on Windows because these are used to produce alternative characters.
 //       Unlike Linux, `Ctrl+Alt` is an alias to `AltGr` on Windows and will produce alternative characters too.
 //       We'll should try bind no keys to `Alt` "modifiers" because there are only a few key bindings available.
+//Windows的键绑定。
+//注意：避免在Windows上使用“Ctrl+Alt”和“AltGr”快捷键，因为它们用于生成替代字符。
+//与Linux不同，“Ctrl+Alt”是Windows上“AltGr”的别名，也会生成替代字符。
+//我们应该尝试不将任何键绑定到“Alt”修饰符，因为只有少数键绑定可用。
 
 export default new Map([
   // MarkText menu on macOS only

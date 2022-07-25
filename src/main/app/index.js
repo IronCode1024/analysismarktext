@@ -22,6 +22,13 @@ class App {
   /**
    * @param {Accessor} accessor The application accessor for application instances.
    * @param {arg.Result} args Parsed application arguments.
+   *@param{Accessor}Accessor 应用程序实例的应用程序访问器。
+   *@param{arg.Result}args 已解析应用程序参数。
+/**
+
+*@param{Accessor}Accessor应用程序实例的应用程序访问器。
+
+*@param{arg.Result}args已解析应用程序参数。
    */
   constructor (accessor, args) {
     this._accessor = accessor

@@ -74,6 +74,7 @@ class AppMenu {
 
   /**
    * Returns a list of all recently used documents and folders.
+   * 返回所有最近使用的文档和文件夹的列表。
    *
    * @returns {string[]}
    */

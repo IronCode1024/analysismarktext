@@ -147,6 +147,8 @@ export const loadEditCommands = commandManager => {
 
 // NOTE: Don't use static `getMenuItemById` here, instead request the menu by
 //       window id from `AppMenu` manager.
+//注意：这里不要使用静态的“getMenuItemById”，而是通过请求菜单
+//“AppMenu”管理器中的窗口id。
 
 export const updateSidebarMenu = (applicationMenu, value) => {
   const sideBarMenuItem = applicationMenu.getMenuItemById('sideBarMenuItem')
