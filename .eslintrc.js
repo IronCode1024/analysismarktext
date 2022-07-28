@@ -25,9 +25,10 @@ module.exports = {
   },
   plugins: ['html', 'vue'],
   rules: {
-    // Two spaces but disallow semicolons
+    // Two spaces but disallow semicolons 两个空格，但不允许分号
     indent: ['error', 2, { 'SwitchCase': 1, 'ignoreComments': true }],
-    semi: [2, 'never'],
+    // semi: [2, 'never'], //"always" (默认) 要求在语句末尾使用分号  "never" 禁止在语句末尾使用分号  "any" (默认) 如果下一句以 [、(、/、+ 或 - 开头，忽略句末分号 (或缺少分号)。
+    semi: 0,
     'no-return-await': 'error',
     'no-return-assign': 'error',
     'no-new': 'error',

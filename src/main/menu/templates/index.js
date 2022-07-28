@@ -25,7 +25,7 @@ export const configSettingMenu = (keybindings) => {
 }
 
 /**
- * Create the application menu for the editor window.
+ * Create the application menu for the editor window. 为编辑器窗口创建应用程序菜单.
  *
  * @param {Keybindings} keybindings The keybindings instance. 为Keybindings实例
  * @param {Preference} preferences The preference instance.首选项首选项实例

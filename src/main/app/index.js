@@ -263,6 +263,7 @@ class App {
    */
   _createEditorWindow (rootDirectory = null, fileList = [], markdownList = [], options = {}) {
     const editor = new EditorWindow(this._accessor)
+    // 创建窗口
     editor.createWindow(rootDirectory, fileList, markdownList, options)
     this._windowManager.add(editor)
     if (this._windowManager.windowCount === 1) {

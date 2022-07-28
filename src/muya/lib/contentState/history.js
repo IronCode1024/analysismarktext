@@ -10,6 +10,8 @@ class History {
   }
 
   undo () {
+    let num = parseInt(new Error().stack.split(':')[7]);
+    console.log('[line:' + num + ']undo')
     this.commitPending()
     if (this.index > 0) {
       this.index = this.index - 1

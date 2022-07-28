@@ -10,6 +10,9 @@ const mutations = {}
 const actions = {
   LISTEN_FOR_EDIT ({ commit }) {
     ipcRenderer.on('mt::editor-edit-action', (e, type) => {
+      alert('mt::editor-edit-action')
+      alert('mt::editor-edit-action1:' + e)
+      alert('mt::editor-edit-action1:' + type)
       if (type === 'findInFolder') {
         commit('SET_LAYOUT', {
           rightColumn: 'search',

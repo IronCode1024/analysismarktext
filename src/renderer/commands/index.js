@@ -129,6 +129,7 @@ const commands = [
   // --------------------------------------------------------------------------
   // Edit
 
+  // focusEditorAndExecute将鼠标的焦点定位到当前位置，例如当前撤销到的位置
   {
     id: 'edit.undo',
     execute: async () => {

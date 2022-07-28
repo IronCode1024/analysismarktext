@@ -214,7 +214,8 @@ class EditorWindow extends BaseWindow {
         this.openTabsFromPaths(fileList)
       }
     }, 0)
-
+    // 显示开发者工具
+    win.webContents.openDevTools();
     return win
   }
 
