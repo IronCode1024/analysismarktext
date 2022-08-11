@@ -98,7 +98,6 @@ class App {
         app.quit()
       }
     })
-
     app.on('activate', () => { // macOS only
       // On OS X it's common to re-create a window in the app when the
       // dock icon is clicked and there are no other windows open.
@@ -482,16 +481,19 @@ class App {
     })
     ipcMain.on('app-open-files-by-id', (windowId, fileList) => {
       const openFilesInNewWindow = this._accessor.preferences.getItem('openFilesInNewWindow')
+      console.log("openFilesInNewWindow:",openFilesInNewWindow)
       if (openFilesInNewWindow) {
         this._createEditorWindow(null, fileList)
       } else {
         const editor = this._windowManager.get(windowId)
+        console.log("editor1:",editor)
         if (editor) {
           editor.openTabsFromPaths(
             fileList.map(p => normalizeMarkdownPath(p))
               .filter(i => i && !i.isDir)
               .map(i => i.path))
         }
+        console.log("editor2:",editor)
       }
     })
 
